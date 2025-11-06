@@ -6,29 +6,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Source Han Sans Web Font 추가: jsdelivr CDN 사용 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/adobe-fonts/source-han-sans@2.004R/SubsetOTF/SourceHanSansK-Regular.otf.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Source Han Sans K', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; margin: 0; padding: 2em; background: #f9f9f9;}
+    body { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; margin: 0; padding: 2em; background: #f9f9f9;}
     .container { max-width: 400px; margin: auto; background: #fff; border-radius: 8px; padding: 2em; box-shadow: 0 2px 8px rgba(0,0,0,0.08);}
     input[type="number"] { width: 80px; padding: 0.4em; margin-right: 1em; font-size: 1.1em;}
     button { padding: 0.4em 1em; font-size: 1.1em;}
     .result { margin-top: 2em; background: #f1f3f4; border-radius: 8px; padding: 1.5em 1.2em; text-align: center;}
     .hanja-big {
-      font-size: 5em; font-family: 'Source Han Sans K', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
-      font-weight: 400;
+      font-size: 5.4em; font-family: 'Noto Serif KR', 'Noto Serif CJK KR', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      font-weight: 650;
       margin-bottom: 0.5em;
       letter-spacing: -0.05em;
     }
-    .meaning-bold { font-size: 1.1em; font-weight: 700; margin-bottom: 0.5em;}
-    .radical-info { color: #777; font-size: 0.98em; margin-top: 0.8em;}
+    .meaning-bold { font-size: 1.4em; font-weight: 700; margin-bottom: 0.1em;}
+    .radical-info { color: #777; font-size: 1.0em; margin-top: 0.2em;}    
     @media (max-width: 500px) {
       .container { padding: 1em; }
       .hanja-big { font-size: 2.3em; }
     }
+    .github-btn {
+      display: inline-block;
+      background-color: #f6f8fa;   /* GitHub 기본 배경 */
+      color: #24292f;              /* GitHub 텍스트 색상 */
+      font-size: 13px;
+      font-weight: 500;
+      padding: 4px 12px;           /* 얇은 높이 */
+      border: 1px solid #d0d7de;   /* 테두리 */
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.1s ease;
+    }
+
+  .github-btn:hover {
+    background-color: #f3f4f6;   /* hover 시 살짝 어두워짐 */
+    border-color: #afb8c1;
+  }
+
+  .github-btn:active {
+    background-color: #eaeef2;   /* 클릭 시 눌린 느낌 */
+    border-color: #8c959f;
+  }
+
+  .github-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(9, 105, 218, 0.3); /* GitHub 파란 포커스 효과 */
+  }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>한자 No로 정보 조회 (2025-11-04)</h2>
+    <h2>한국어문회3급 한자 번호 조회 (2025-11-04)</h2>
     <form id="searchForm">
       <input type="text" inputmode="numeric" min="1" id="inputNo" placeholder="No 입력" required inputmode="numeric" pattern="[0-9]*" autocomplete="off" />
       <button type="submit">검색</button>
@@ -877,6 +906,8 @@
         <div class="hanja-big">${found[2]}</div>
         <div class="meaning-bold">${parseMeaning(found[3])}</div>
         <div class="radical-info">부수: ${found[4]}</div>
+        <!-- 직접 링크(새탭으로 열림) -->
+		    <div><a class="github-btn" href="https://dic.daum.net/search.do?q=${found[2]}&dic=hanja" target="_blank" rel="noopener noreferrer">보기</a></div>
       `;
     } else {
       resultDiv.innerHTML = '해당 No의 한자 정보를 찾을 수 없습니다.';
@@ -892,6 +923,7 @@
   </script>
 </body>
 </html>
+
 
 
 
